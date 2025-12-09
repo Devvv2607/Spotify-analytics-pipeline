@@ -1,0 +1,8 @@
+pandas>=1.2
+numpy>=1.18
+matplotlib>=3.0
+seaborn>=0.11
+ipython
+jupyter
+mysql-connector-python>=8.0
+sqlite3
