@@ -36,9 +36,7 @@ This project provides an end-to-end ETL pipeline for Spotify data, including:
 .
 ├── app.py                          # Streamlit interactive dashboard
 ├── spotify_analysis.py             # Standalone analysis script
-├── create_sql_db.py               # Create SQLite database from CSV
 ├── csv_to_mysql.py                # Direct CSV to MySQL loader
-├── migrate_sqlite_to_mysql.py     # SQLite to MySQL migration tool
 ├── spotify sql.sql                # SQL queries and analytics
 ├── dataset.csv                    # Raw Spotify dataset
 ├── spotify_clean.csv              # Cleaned dataset (processed)
@@ -66,8 +64,7 @@ This project provides an end-to-end ETL pipeline for Spotify data, including:
 - 📁 Batch plot generation and export
 
 ### Database Support
-- 🗄️ SQLite for development/local use
-- 🗄️ MySQL for production/cloud deployment
+- 🗄️ MySQL for production
 - 🔄 Easy migration between databases
 - 📋 Pre-built SQL queries
 
@@ -171,22 +168,7 @@ print(df_final.head())
 
 ## 🗄️ Database Setup
 
-### SQLite (Local Development)
 
-**Create from CSV:**
-```powershell
-python create_sql_db.py
-```
-
-**Query the database:**
-```powershell
-python
->>> import sqlite3
->>> conn = sqlite3.connect('spotify_tracks.db')
->>> import pandas as pd
->>> df = pd.read_sql('SELECT * FROM tracks LIMIT 5', conn)
->>> print(df)
-```
 
 ### MySQL (Production)
 
@@ -199,14 +181,6 @@ python csv_to_mysql.py `
   --db spotify
 ```
 
-#### Option 2: Migrate from SQLite
-```powershell
-python migrate_sqlite_to_mysql.py `
-  --host localhost `
-  --user root `
-  --password your_password `
-  --db spotify
-```
 
 **Verify connection:**
 ```powershell
@@ -277,9 +251,7 @@ sqlite3 spotify_tracks.db < "spotify sql.sql"
 |------|---------|
 | `app.py` | Streamlit dashboard for interactive analytics |
 | `spotify_analysis.py` | Standalone EDA script with plotting functions |
-| `create_sql_db.py` | Creates SQLite database from CSV |
 | `csv_to_mysql.py` | Loads CSV data directly into MySQL |
-| `migrate_sqlite_to_mysql.py` | Migrates SQLite database to MySQL |
 | `spotify sql.sql` | SQL queries for analytics and reporting |
 | `dataset.csv` | Raw Spotify dataset |
 | `spotify_clean.csv` | Cleaned and processed dataset |
